@@ -1,9 +1,13 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import { useEffect } from "react";
+import useFetch from "../hooks/useFetch";
+import Header from "../components/Header/Header";
 
 export default function Home() {
+  const { loadedData } = useFetch("https://restcountries.com/v2/name/irn");
+  console.log(loadedData);
+
   return (
     <Box>
       <Head>
@@ -12,7 +16,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Box>HELLOO</Box>
+      <Header />
     </Box>
   );
 }
