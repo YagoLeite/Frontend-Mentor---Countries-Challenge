@@ -1,20 +1,36 @@
-import { Box, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
+import Card from "./Card";
+import useFetch from "../../hooks/useFetch";
+
+const test = [1, 2, 3, 4, 5, 6, 6, 7, 8, 8, 9, 4, 4, 1, 2];
 
 const Body = () => {
+  const text = useColorModeValue("dark", "light");
+  const bg = useColorModeValue("hsl(0, 0%, 98%)", "gray.800");
+
+  const { loadedData, loading } = useFetch("https://restcountries.com/v2/all");
+  console.log(loadedData);
   return (
-    <Box h="100vh" w="100%">
+    <Box bg={bg} h="100vh" w="100%">
       <Grid
         h="100%"
         mx="5%"
-        gap="8"
-        gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))"
+        gridTemplateColumns="repeat(auto-fit, minmax(290px, 1fr))"
       >
-        <GridItem display="flex" justifyContent="center" alignItems="center">
-          <Box h="80%" w="80%" _hover={{ w: "90%", h: "90%" }} bg="red">
-            oi
-          </Box>
-        </GridItem>
+        {loading && <p>loading</p>}
+        {!loading &&
+          loadedData &&
+          loadedData.map((a) => (
+            <GridItem
+              h="380px"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Card data={a} />
+            </GridItem>
+          ))}
       </Grid>
     </Box>
   );

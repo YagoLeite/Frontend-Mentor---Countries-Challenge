@@ -6,9 +6,6 @@ import Header from "../components/Header/Header";
 import Body from "../components/Body/Body";
 
 export default function Home() {
-  const { loadedData } = useFetch("https://restcountries.com/v2/name/irn");
-  console.log(loadedData);
-
   return (
     <Box>
       <Head>
