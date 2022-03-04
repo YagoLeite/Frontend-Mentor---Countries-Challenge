@@ -1,4 +1,11 @@
-import { Box, Flex, Grid, GridItem, useColorModeValue } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Grid,
+  GridItem,
+  useColorModeValue,
+  Spinner,
+} from "@chakra-ui/react";
 import React from "react";
 import Card from "./Card";
 import useFetch from "../../hooks/useFetch";
@@ -13,12 +20,22 @@ const Body = () => {
   console.log(loadedData);
   return (
     <Box bg={bg} h="100vh" w="100%">
+      {loading && (
+        <Flex h="100%" w="100%" justifyContent="center" alignItems="center">
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+          />
+        </Flex>
+      )}
       <Grid
         h="100%"
         mx="5%"
         gridTemplateColumns="repeat(auto-fit, minmax(290px, 1fr))"
       >
-        {loading && <p>loading</p>}
         {!loading &&
           loadedData &&
           loadedData.map((a) => (
