@@ -38,11 +38,10 @@ const Header = () => {
         shadow={y > height ? "sm" : undefined}
         transition="box-shadow 0.2s"
         bg={bg}
-        borderTopColor="brand.400"
         w="full"
         overflowY="hidden"
       >
-        <chakra.div h="4.5rem" mx="auto" maxW="1200px">
+        <chakra.div h="4.5rem" mx="auto" maxW="1440px">
           <Flex w="full" h="full" px="6" align="center" justify="space-between">
             <Flex align="center" w="100%">
               <Link href="/">

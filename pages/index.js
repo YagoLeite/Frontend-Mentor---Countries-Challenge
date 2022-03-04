@@ -1,8 +1,9 @@
-import { Box, Button } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import Head from "next/head";
 import { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 import Header from "../components/Header/Header";
+import Body from "../components/Body/Body";
 
 export default function Home() {
   const { loadedData } = useFetch("https://restcountries.com/v2/name/irn");
@@ -17,6 +18,7 @@ export default function Home() {
       </Head>
 
       <Header />
+      <Body />
     </Box>
   );
 }
